@@ -1,8 +1,6 @@
 <?php
 
-require '../src/facebook.php';
-
-$facebook = new Facebook(array(
+$facebook = new Facebook_Api(array(
   'appId'  => '344617158898614',
   'secret' => '6dc8ac871858b34798bc2488200e503d',
 ));
@@ -14,7 +12,7 @@ if ($user) {
   try {
     // Proceed knowing you have a logged in user who's authenticated.
     $user_profile = $facebook->api('/me');
-  } catch (FacebookApiException $e) {
+  } catch (Facebook_Api_Exception $e) {
     echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
     $user = null;
   }
